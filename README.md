@@ -1,1 +1,1 @@
-# Spring Boot backend for Ecom site.
+# Spring Boot backend for Ecom site: Bazaar.
