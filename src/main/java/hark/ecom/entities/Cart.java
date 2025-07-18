@@ -41,7 +41,4 @@ public class Cart {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-//    @OneToMany(mappedBy = "product_id", cascade = CascadeType.ALL)
-//    private Set<Product> products;
-
 }

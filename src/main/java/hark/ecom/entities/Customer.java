@@ -19,7 +19,7 @@ public class Customer {
     @Column(name = "customer_id")
     private int id;
 
-    @Column(name = "username")
+    @Column(name = "username", nullable = false)
     private String username;
 
     @Column(name = "first_name")
