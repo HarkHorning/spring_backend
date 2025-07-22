@@ -37,6 +37,9 @@ public class Customer {
     @Column(name = "avatar_URL")
     private String avatarURL;
 
+    @Column(name = "state")
+    private String state;
+
     @Column(name = "created")
     @CreationTimestamp
     private Date created;

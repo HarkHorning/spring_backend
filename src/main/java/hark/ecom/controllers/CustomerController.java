@@ -14,17 +14,11 @@ import java.util.Optional;
 @CrossOrigin("http://localhost:3000")
 public class CustomerController {
 
-    private CustomerRepository customerRepository;
-    private CustomerService customerService;
+    private final CustomerService customerService;
 
     @Autowired
-    public CustomerController(CustomerRepository customerRepository, CustomerService customerService) {
-        this.customerRepository = customerRepository;
+    public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
-    }
-
-    public CustomerController(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
     }
 
     @PostMapping("/signup")

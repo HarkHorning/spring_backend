@@ -1,6 +1,7 @@
 package hark.ecom.entities;
 
 import hark.ecom.entities.enums.CartStatus;
+import hark.ecom.entities.products.CartItem;
 import hark.ecom.entities.products.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,7 +9,9 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,7 +40,10 @@ public class Cart {
     @Column(name = "cart_status")
     private CartStatus status;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<CartItem> cartItems = new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 

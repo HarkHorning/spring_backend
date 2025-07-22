@@ -1,7 +1,11 @@
 package hark.ecom.bootstrap;
 
+import hark.ecom.entities.Cart;
 import hark.ecom.entities.Customer;
+import hark.ecom.entities.enums.CartStatus;
+import hark.ecom.entities.products.CartItem;
 import hark.ecom.entities.products.Product;
+import hark.ecom.repositories.CartRepository;
 import hark.ecom.repositories.CustomerRepository;
 import hark.ecom.repositories.products.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -11,16 +15,31 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
 
     private final CustomerRepository customerRepo;
     private final ProductRepository productRepo;
+    private final CartRepository cartRepository;
 
-    public BootStrapData(CustomerRepository customerRepo,  ProductRepository productRepo) {
+    public BootStrapData(CustomerRepository customerRepo,  ProductRepository productRepo, CartRepository cartRepository) {
         this.customerRepo = customerRepo;
         this.productRepo = productRepo;
+        this.cartRepository = cartRepository;
+    }
+
+    private void makeCart(Customer customer) {
+
+        Cart cart = new Cart();
+        cart.setStatus(CartStatus.pending);
+        cart.setOrderTrackingNumber("trackingNum");
+        cart.setCustomer(customer);
+
+        if (cartRepository.count() == 0) {
+            cartRepository.save(cart);
+        }
     }
 
     @Override
@@ -40,41 +59,59 @@ public class BootStrapData implements CommandLineRunner {
         customer2.setPhone("12345678901");
         customer2.setAddress("Lane");
 
+        Customer[] sampleCustomers = {customer,customer2};
+
+        List<Customer> allCustomers = (List<Customer>) customerRepo.findAll();
+
+        for (Customer sampleCustomer: sampleCustomers) { boolean exists = false;
+            for (Customer thisCustomer : allCustomers) {
+                if (thisCustomer.getUsername().equals(sampleCustomer.getUsername())) {
+                    exists = true;
+                }
+            }
+            if (!exists) {
+                customerRepo.save(sampleCustomer);
+            }
+        }
+
+        this.makeCart(customer);
+
+
 //        customerRepo.save(customer2);
 
         Product product = new Product();
         product.setProductName("Sword");
-        product.setDescription("Very big sword. Very pointy.");
+        product.setDescription("Very big sword. Very pointy. If you stab someone, don't tell anyone where you got the sword.");
         product.setProductPrice(BigDecimal.valueOf(12.23));
         product.setProductRating(BigDecimal.valueOf(3.9));
 
         Product product2 = new Product();
         product2.setProductName("Spoon");
-        product2.setDescription("Can use to eat sandwitch.");
+        product2.setDescription("Can use to eat sandwitch. But that's not really what this is made for. But if you must...");
         product2.setProductPrice(BigDecimal.valueOf(4.21));
         product2.setProductRating(BigDecimal.valueOf(2.1));
 
         Product product3 = new Product();
         product3.setProductName("Shoe");
-        product3.setDescription("Can use to walk.");
+        product3.setDescription("Can use to walk. Famously used to walk 500 miles and then 500 miles more by the Proclaimers.");
         product3.setProductPrice(BigDecimal.valueOf(74.21));
         product3.setProductRating(BigDecimal.valueOf(2.1));
 
         Product product4 = new Product();
         product4.setProductName("Potato");
-        product4.setDescription("Entirely edible.");
+        product4.setDescription("Entirely edible. Entirely fun. Great for entertaining crowds. People will be jealous.");
         product4.setProductPrice(BigDecimal.valueOf(2.01));
         product4.setProductRating(BigDecimal.valueOf(5.0));
 
         Product product5 = new Product();
         product5.setProductName("Shampoo");
-        product5.setDescription("Not entirely edible.");
+        product5.setDescription("Not entirely edible. Made for use in hair. You can wash your hair with this product.");
         product5.setProductPrice(BigDecimal.valueOf(4.01));
         product5.setProductRating(BigDecimal.valueOf(3.0));
 
         Product product6 = new Product();
         product6.setProductName("Water");
-        product6.setDescription("Not entirely drinkable.");
+        product6.setDescription("Not entirely drinkable. It was. But after we put it in these water bottles, they seem to be poisonous.");
         product6.setProductPrice(BigDecimal.valueOf(42.07));
         product6.setProductRating(BigDecimal.valueOf(4.5));
 
