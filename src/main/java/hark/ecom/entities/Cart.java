@@ -41,7 +41,7 @@ public class Cart {
     private CartStatus status;
 
     @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<CartItem> cartItems = new ArrayList<>();
+    private List<CartItem> cartItems;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")

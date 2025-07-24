@@ -1,5 +1,6 @@
 package hark.ecom.entities.products;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import hark.ecom.entities.Cart;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -22,11 +24,16 @@ public class CartItem {
 
     @ManyToOne
     @JoinColumn(name = "cart_id") // Foreign key to Cart
+    @JsonIgnore
     private Cart cart;
 
     @ManyToOne
     @JoinColumn(name = "product_id") // Foreign key to Product
     private Product product;
+
+    @ManyToMany
+    @JoinTable( name = "product_cart_item", joinColumns = @JoinColumn(name = "cart_item_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private Set<Product> products;
 
     @Column(name = "created")
     @CreationTimestamp

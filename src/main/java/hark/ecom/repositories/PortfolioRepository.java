@@ -1,4 +1,4 @@
-package hark.ecom.repositories.products;
+package hark.ecom.repositories;
 
 import hark.ecom.entities.Portfolio;
 import org.springframework.data.jpa.repository.JpaRepository;

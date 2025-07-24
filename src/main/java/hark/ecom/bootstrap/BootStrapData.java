@@ -16,6 +16,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
@@ -34,13 +35,18 @@ public class BootStrapData implements CommandLineRunner {
 
         Cart cart = new Cart();
         cart.setStatus(CartStatus.pending);
-        cart.setOrderTrackingNumber("trackingNum");
+        cart.setOrderTrackingNumber(generateOrderTrackingNumber());
         cart.setCustomer(customer);
 
         if (cartRepository.count() == 0) {
             cartRepository.save(cart);
         }
     }
+
+    private String generateOrderTrackingNumber() {
+        return UUID.randomUUID().toString();
+    }
+
 
     @Override
     public void run(String... args) throws Exception {

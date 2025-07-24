@@ -29,25 +29,26 @@ public class CartService {
     }
 
     public Cart cartbyid(long id) {
-
-        Optional<Cart> cart = cartRepository.findById(id);
-        return cart.orElse(null);
+        return cartRepository.findById(id).orElse(null);
     }
 
-    public String addItem(Cart cart, long productId) {
+    public String addItem(Long cartId, Long productId) {
 
         Product product = productRepository.findById(productId).orElse(null);
+        Cart cart = cartRepository.findById(cartId).orElse(null);
 
-        if (product == null){ return "Failed to find product with id: " + productId; }
-        else {
+        if (product == null || cart == null) {
+            return "Failed to find product with id: " + productId;
+        } else {
 
             CartItem cartItem = new CartItem();
             cartItem.setCart(cart);
             cartItem.setProduct(product);
+            cartItemRepository.save(cartItem);
 
             List<CartItem> cartItemList = cart.getCartItems();
-
-            cart.setCartItems(cartItemList);
+            cartItemList.add(cartItem);
+//            cart.setCartItems(cartItemList);
             cartRepository.save(cart);
 
             return "Successfully added product with id: " + productId;
