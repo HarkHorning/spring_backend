@@ -1,9 +1,12 @@
 package hark.ecom.services;
 
 import hark.ecom.entities.Cart;
+import hark.ecom.entities.Customer;
+import hark.ecom.entities.enums.CartStatus;
 import hark.ecom.entities.products.CartItem;
 import hark.ecom.entities.products.Product;
 import hark.ecom.repositories.CartRepository;
+import hark.ecom.repositories.CustomerRepository;
 import hark.ecom.repositories.products.CartItemRepository;
 import hark.ecom.repositories.products.ProductRepository;
 import jakarta.annotation.Nullable;
@@ -13,12 +16,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CartService {
 
     @Autowired
-    private CartRepository cartRepository;
+    private static CartRepository cartRepository;
     private CartItemRepository cartItemRepository;
     private ProductRepository productRepository;
 
@@ -28,8 +32,27 @@ public class CartService {
         this.productRepository = productRepository;
     }
 
+    public String createCart(Customer customer) {
+
+        Cart cart = new Cart();
+        cart.setStatus(CartStatus.pending);
+        cart.setOrderTrackingNumber(generateOrderTrackingNumber());
+        cart.setCustomer(customer);
+        cartRepository.save(cart);
+
+        return "";
+    }
+
+    private String generateOrderTrackingNumber() {
+        return UUID.randomUUID().toString();
+    }
+
     public Cart cartbyid(long id) {
         return cartRepository.findById(id).orElse(null);
+    }
+
+    public static Cart cartByUserId(long id) {
+        return cartRepository.findByCustomerId(id);
     }
 
     public String addItem(Long cartId, Long productId) {

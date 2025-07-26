@@ -8,6 +8,7 @@ import hark.ecom.entities.products.Product;
 import hark.ecom.repositories.CartRepository;
 import hark.ecom.repositories.CustomerRepository;
 import hark.ecom.repositories.products.ProductRepository;
+import hark.ecom.services.CartService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -24,28 +25,30 @@ public class BootStrapData implements CommandLineRunner {
     private final CustomerRepository customerRepo;
     private final ProductRepository productRepo;
     private final CartRepository cartRepository;
+    private final CartService cartService;
 
-    public BootStrapData(CustomerRepository customerRepo,  ProductRepository productRepo, CartRepository cartRepository) {
+    public BootStrapData(CustomerRepository customerRepo,  ProductRepository productRepo, CartRepository cartRepository, CartService cartService) {
         this.customerRepo = customerRepo;
         this.productRepo = productRepo;
         this.cartRepository = cartRepository;
+        this.cartService = cartService;
     }
 
-    private void makeCart(Customer customer) {
-
-        Cart cart = new Cart();
-        cart.setStatus(CartStatus.pending);
-        cart.setOrderTrackingNumber(generateOrderTrackingNumber());
-        cart.setCustomer(customer);
-
-        if (cartRepository.count() == 0) {
-            cartRepository.save(cart);
-        }
-    }
-
-    private String generateOrderTrackingNumber() {
-        return UUID.randomUUID().toString();
-    }
+//    private void makeCart(Customer customer) {
+//
+//        Cart cart = new Cart();
+//        cart.setStatus(CartStatus.pending);
+//        cart.setOrderTrackingNumber(generateOrderTrackingNumber());
+//        cart.setCustomer(customer);
+//
+//        if (cartRepository.count() <= 2) {
+//            cartRepository.save(cart);
+//        }
+//    }
+//
+//    private String generateOrderTrackingNumber() {
+//        return UUID.randomUUID().toString();
+//    }
 
 
     @Override
@@ -76,11 +79,11 @@ public class BootStrapData implements CommandLineRunner {
                 }
             }
             if (!exists) {
+                // create cart
+                cartService.createCart(sampleCustomer);
                 customerRepo.save(sampleCustomer);
             }
         }
-
-        this.makeCart(customer);
 
 
 //        customerRepo.save(customer2);
