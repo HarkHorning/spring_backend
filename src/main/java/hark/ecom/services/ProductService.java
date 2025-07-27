@@ -27,7 +27,7 @@ public class ProductService {
 
     public Set<Product> searchProducts(String filter) {
 
-        Set<Product> products = productRepository.findAllByProductNameNotContainingIgnoreCase(filter);
+        Set<Product> products = productRepository.findAllByProductNameContainingIgnoreCase(filter);
         return products;
     }
 }

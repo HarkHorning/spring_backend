@@ -33,4 +33,9 @@ public class CartController {
     public String addItem(@Param("ca_id") Long ca_id, @Param("pr_id") Long pr_id) {
         return cartService.addItem(ca_id, pr_id);
     }
+
+    @PostMapping("/removeitem")
+    public String removeItem(@Param("ca_id") Long ca_id, @Param("pr_id") Long pr_id) {
+        return cartService.removeItem(ca_id, pr_id);
+    }
 }

@@ -77,4 +77,21 @@ public class CartService {
             return "Successfully added product with id: " + productId;
         }
     }
+
+    public String removeItem(Long cartId, Long productId) {
+//        Product product = productRepository.findById(productId).orElse(null);
+        Cart cart = cartRepository.findById(cartId).orElse(null);
+        if (cart == null || cart.getCartItems() == null || cart.getCartItems().isEmpty()) {
+            return "Failed to find cart with id: " + cartId;
+        } else {
+            CartItem cartItem = cartItemRepository.findById(productId).orElse(null);
+            if (cartItem == null) {
+                return "Failed to find product with id: " + productId;
+            } else {
+                cartItemRepository.delete(cartItem);
+                
+                return "Successfully removed product with id: " + productId;
+            }
+        }
+    }
 }

@@ -11,4 +11,5 @@ import java.util.Set;
 @Repository
 public interface ProductRepository extends JpaRepository<Product,Long> {
     Set<Product> findAllByProductNameNotContainingIgnoreCase(String productName);
+    Set<Product> findAllByProductNameContainingIgnoreCase(String productName);
 }
