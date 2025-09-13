@@ -1,23 +1,16 @@
 package hark.ecom.bootstrap;
 
-import hark.ecom.entities.Cart;
 import hark.ecom.entities.Customer;
-import hark.ecom.entities.enums.CartStatus;
-import hark.ecom.entities.products.CartItem;
 import hark.ecom.entities.products.Product;
 import hark.ecom.repositories.CartRepository;
-import hark.ecom.repositories.CustomerRepository;
+import hark.ecom.repositories.customers.CustomerRepository;
 import hark.ecom.repositories.products.ProductRepository;
 import hark.ecom.services.CartService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Component
 public class BootStrapData implements CommandLineRunner {
