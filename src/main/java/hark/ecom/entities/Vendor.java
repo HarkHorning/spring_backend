@@ -19,14 +19,11 @@ public class Vendor {
     @Column(name = "vendor_id")
     private int id;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "shop_name")
+    private String shopName;
 
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "vendor_email")
+    private String email;
 
     @Column(name = "phone")
     private String phone;

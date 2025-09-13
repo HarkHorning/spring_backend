@@ -1,14 +1,11 @@
 package hark.ecom.controllers;
 
 import hark.ecom.entities.Customer;
-import hark.ecom.repositories.CustomerRepository;
 import hark.ecom.services.CartService;
 import hark.ecom.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/customer")

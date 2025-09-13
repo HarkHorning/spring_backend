@@ -1,7 +1,7 @@
 package hark.ecom.services;
 
 import hark.ecom.entities.Customer;
-import hark.ecom.repositories.CustomerRepository;
+import hark.ecom.repositories.customers.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

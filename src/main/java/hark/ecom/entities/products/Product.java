@@ -34,6 +34,9 @@ public class Product {
     @Column(name = "product_rating")
     private BigDecimal productRating;
 
+    @Column(name = "product_URL")
+    private String productURL;
+
     @OneToOne
     @JoinColumn(name = "category_id")
     private Category category;
