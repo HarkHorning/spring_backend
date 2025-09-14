@@ -1,8 +1,6 @@
 package hark.ecom.controllers;
 
-import hark.ecom.entities.Customer;
 import hark.ecom.entities.products.Product;
-import hark.ecom.repositories.products.ProductRepository;
 import hark.ecom.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;

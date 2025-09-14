@@ -1,6 +1,6 @@
 package hark.ecom.bootstrap;
 
-import hark.ecom.entities.Customer;
+import hark.ecom.entities.customers.Customer;
 import hark.ecom.entities.products.Product;
 import hark.ecom.repositories.CartRepository;
 import hark.ecom.repositories.customers.CustomerRepository;

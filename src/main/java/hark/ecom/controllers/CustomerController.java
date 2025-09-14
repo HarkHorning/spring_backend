@@ -1,6 +1,8 @@
 package hark.ecom.controllers;
 
-import hark.ecom.entities.Customer;
+import hark.ecom.entities.customers.Customer;
+import hark.ecom.entities.customers.CustomerAuth;
+import hark.ecom.repositories.customers.CustomerAuthRepository;
 import hark.ecom.services.CartService;
 import hark.ecom.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +24,9 @@ public class CustomerController {
     }
 
     @PostMapping("/signup")
-    public Customer newCustomer(@RequestBody Customer customer) {
+    public Customer newCustomer(@Param("pwd") String pwd, @RequestBody Customer customer) {
         cartService.createCart(customer);
+        customerService.createAuth(customer, pwd);
         return customerService.createCustomer(customer);
     }
 
