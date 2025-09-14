@@ -1,5 +1,6 @@
 package hark.ecom.entities;
 
+import hark.ecom.entities.customers.Customer;
 import hark.ecom.entities.enums.CartStatus;
 import hark.ecom.entities.products.CartItem;
 import jakarta.persistence.*;

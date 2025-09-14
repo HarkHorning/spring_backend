@@ -1,7 +1,7 @@
 package hark.ecom.services;
 
 import hark.ecom.entities.Cart;
-import hark.ecom.entities.Customer;
+import hark.ecom.entities.customers.Customer;
 import hark.ecom.entities.enums.CartStatus;
 import hark.ecom.entities.products.CartItem;
 import hark.ecom.entities.products.Product;

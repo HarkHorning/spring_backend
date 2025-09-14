@@ -1,4 +1,4 @@
-package hark.ecom.entities;
+package hark.ecom.entities.customers;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
