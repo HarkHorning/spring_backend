@@ -27,7 +27,10 @@ public class CustomerService {
     }
 
     public String createAuth(Customer customer, String pwd) {
+//        decrypt
+//        validate
         String password = Hash.bCrypt(pwd);
+
         CustomerAuth customerAuth = new CustomerAuth();
         customerAuth.setCustomer(customer);
         customerAuth.setPassword(password);
@@ -40,5 +43,27 @@ public class CustomerService {
 
         Optional<Customer> self = customerRepository.findById(id);
         return self.orElse(null);
+    }
+
+    public String signin(String username, String pwd) {
+
+//        decrypt
+//        validate
+
+        String password = Hash.bCrypt(pwd);
+
+        if (username == null || pwd == null) {
+            return "Username or password is empty";
+        } else {
+
+            CustomerAuth realAuth = customerAuthRepository.findByPasswordAndUsername(password, username);
+
+            if (realAuth == null) {
+                return "No match found for username or password";
+            } else {
+
+                return "success";
+            }
+        }
     }
 }

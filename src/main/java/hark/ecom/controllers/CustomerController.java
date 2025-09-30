@@ -30,6 +30,11 @@ public class CustomerController {
         return customerService.createCustomer(customer);
     }
 
+    @PostMapping("/signin")
+    public String signin(@Param("pwd") String pwd, @Param("username")  String username, @Param("password") String password) {
+        return customerService.signin(username, pwd);
+    }
+
     @RequestMapping("/self")
     public Customer findCustomerById(@Param("id") long id) {
         return customerService.findCustomerById(id);

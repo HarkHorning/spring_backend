@@ -8,4 +8,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin("http://localhost:3000")
 @Repository
 public interface CustomerAuthRepository extends JpaRepository<CustomerAuth,Long> {
+    CustomerAuth findByPasswordAndUsername(String password, String username);
 }
