@@ -1,8 +1,9 @@
-package hark.ecom.entities.products;
+package hark.ecom.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import hark.ecom.entities.Cart;
 import hark.ecom.entities.OrderedCart;
+import hark.ecom.entities.products.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,25 +16,25 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@Table(name = "cart_item")
-public class CartItem {
+@Table(name = "ordered_cart_item")
+public class OrderedCartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cart_item_id")
+    @Column(name = "ordered_cart_item_id")
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "cart_id") // Foreign key to Cart
+    @JoinColumn(name = "ordered_cart_id") // Foreign key to Cart
     @JsonIgnore
-    private Cart cart;
+    private OrderedCart orderedCart;
 
     @ManyToOne
     @JoinColumn(name = "product_id") // Foreign key to Product
     private Product product;
 
     @ManyToMany
-    @JoinTable( name = "product_cart_item", joinColumns = @JoinColumn(name = "cart_item_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    @JoinTable( name = "ordered_product_cart_item", joinColumns = @JoinColumn(name = "ordered_cart_item_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
     private Set<Product> products;
 
     @Column(name = "created")

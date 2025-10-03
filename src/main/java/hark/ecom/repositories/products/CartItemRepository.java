@@ -12,7 +12,4 @@ import java.util.List;
 @CrossOrigin("http://localhost:3000")
 @Repository
 public interface CartItemRepository extends JpaRepository<CartItem,Long> {
-    List<CartItem> findAllByProduct(Product productId);
-
-    CartItem findByCart(Cart cart);
 }
