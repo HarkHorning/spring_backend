@@ -1,17 +1,22 @@
 package hark.ecom.services;
 
 import hark.ecom.entities.Cart;
+import hark.ecom.entities.OrderedCart;
+import hark.ecom.entities.OrderedCartItem;
 import hark.ecom.entities.customers.Customer;
 import hark.ecom.entities.enums.CartStatus;
 import hark.ecom.entities.products.CartItem;
 import hark.ecom.entities.products.Product;
 import hark.ecom.repositories.CartRepository;
+import hark.ecom.repositories.OrderedCartItemRepository;
+import hark.ecom.repositories.OrderedCartsRepository;
 import hark.ecom.repositories.customers.CustomerRepository;
 import hark.ecom.repositories.products.CartItemRepository;
 import hark.ecom.repositories.products.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,15 +25,20 @@ public class CartService {
 
     @Autowired
     private static CartRepository cartRepository;
-    private CartItemRepository cartItemRepository;
-    private ProductRepository productRepository;
-    private CustomerRepository customerRepository;
+    private final CartItemRepository cartItemRepository;
+    private final ProductRepository productRepository;
+    private final CustomerRepository customerRepository;
+    private final OrderedCartsRepository orderedCartsRepository;
+    private final OrderedCartItemRepository orderedCartItemRepository;
 
-    public CartService(CartRepository cartRepository, CartItemRepository cartItemRepository, ProductRepository productRepository, CustomerRepository customerRepository) {
-        this.cartRepository = cartRepository;
+
+    public CartService(CartRepository cartRepository, CartItemRepository cartItemRepository, ProductRepository productRepository, CustomerRepository customerRepository, OrderedCartsRepository orderedCartsRepository, OrderedCartItemRepository orderedCartItemRepository) {
+        CartService.cartRepository = cartRepository;
         this.cartItemRepository = cartItemRepository;
         this.productRepository = productRepository;
         this.customerRepository = customerRepository;
+        this.orderedCartsRepository = orderedCartsRepository;
+        this.orderedCartItemRepository = orderedCartItemRepository;
     }
 
     public String createCart(Customer customer) {
@@ -111,10 +121,28 @@ public class CartService {
         if (cart == null) {
             return "Failed to find cart";
         } else  {
-            cart.setStatus(CartStatus.ordered);
-            cart.setOrderTrackingNumber(generateOrderTrackingNumber());
+
+            OrderedCart orderedCart = new OrderedCart();
+            orderedCart.setCustomer(customer);
+            orderedCart.setOrderTrackingNumber(generateOrderTrackingNumber());
+            List<CartItem> cartItems = cart.getCartItems();
+            orderedCart.setStatus(CartStatus.ordered);
+            List<OrderedCartItem> orderedCartItems = new ArrayList<>();
+            for  (CartItem item : cartItems) {
+                OrderedCartItem thisItem = new OrderedCartItem();
+                thisItem.setOrderedCart(orderedCart);
+                thisItem.setProduct(item.getProduct());
+                orderedCartItems.add(thisItem);
+            }
+            orderedCart.setOrderedCartItems(orderedCartItems);
+            orderedCartsRepository.save(orderedCart);
+            orderedCartItemRepository.saveAll(orderedCartItems);
+
+
+            cartItemRepository.deleteAll(cart.getCartItems());
+            cart.getCartItems().clear();
             cartRepository.save(cart);
-//            cartItem.set
+
             return "Successfully bought a cart with id: " + cart.getId();
         }
     }
