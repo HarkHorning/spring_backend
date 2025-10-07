@@ -123,6 +123,7 @@ public class CartService {
         } else  {
 
             OrderedCart orderedCart = new OrderedCart();
+//            orderedCartsRepository.save(orderedCart);
             orderedCart.setCustomer(customer);
             orderedCart.setOrderTrackingNumber(generateOrderTrackingNumber());
             List<CartItem> cartItems = cart.getCartItems();
