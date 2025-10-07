@@ -28,8 +28,8 @@ public class VendorController {
     }
 
     @RequestMapping("/getvendor")
-    public Vendor getVendorById(@Param("id") Long id) {
-        return vendorService.getVendorById(id);
+    public Vendor getVendorByCustomerId(@Param("id") Long id) {
+        return vendorService.getVendorByCustomerId(id);
     }
 
     @PostMapping("createportfolio")

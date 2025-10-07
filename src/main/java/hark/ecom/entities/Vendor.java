@@ -1,5 +1,6 @@
 package hark.ecom.entities;
 
+import hark.ecom.entities.customers.Customer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,10 @@ public class Vendor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "vendor_id")
     private int id;
+
+    @OneToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     @Column(name = "shop_name")
     private String shopName;

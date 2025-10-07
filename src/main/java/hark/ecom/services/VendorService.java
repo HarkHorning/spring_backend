@@ -2,6 +2,7 @@ package hark.ecom.services;
 
 import hark.ecom.entities.Portfolio;
 import hark.ecom.entities.Vendor;
+import hark.ecom.entities.customers.Customer;
 import hark.ecom.entities.products.Product;
 import hark.ecom.repositories.customers.CustomerRepository;
 import hark.ecom.repositories.PortfolioRepository;
@@ -29,11 +30,15 @@ public class VendorService {
     }
 
     public Vendor createVendor(Vendor vendor) {
+        Customer customer =  vendor.getCustomer();
+//        System.out.println(customer.getUsername());
+        customerRepository.save(customer);
+        vendor.setCustomer(customer);
         return vendorRepository.save(vendor);
     }
 
-    public Vendor getVendorById(Long vendorId) {
-        return vendorRepository.findById(vendorId).orElse(null);
+    public Vendor getVendorByCustomerId(Long id) {
+        return vendorRepository.findByCustomerId(id);
     }
 
     public Portfolio createPortfolio(Portfolio portfolio) {
