@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.List;
 import java.util.Set;
 
 @CrossOrigin("http://localhost:3000")
@@ -12,4 +13,6 @@ import java.util.Set;
 public interface ProductRepository extends JpaRepository<Product,Long> {
     Set<Product> findAllByProductNameNotContainingIgnoreCase(String productName);
     Set<Product> findAllByProductNameContainingIgnoreCase(String productName);
+
+    List<Product> getProductByPortfolio_Id(int portfolioId);
 }
