@@ -36,8 +36,8 @@ public class Portfolio {
     @UpdateTimestamp
     private Date modified;
 
-    @OneToMany(mappedBy = "portfolio", fetch = FetchType.LAZY, orphanRemoval = true)
-    private List<Product> products;
+//    @OneToMany(mappedBy = "portfolio", fetch = FetchType.LAZY, orphanRemoval = true)
+//    private List<Product> products;
 
     @ManyToOne
     @JoinColumn(name = "vendor_id")

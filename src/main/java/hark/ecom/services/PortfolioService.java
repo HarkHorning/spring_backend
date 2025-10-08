@@ -38,6 +38,11 @@ public class PortfolioService {
         return portfolioRepository.findAllByVendor(vendor);
     }
 
+    public Portfolio getPortfolio(long id) {
+
+        return portfolioRepository.findById(id).orElse(null);
+    }
+
     public List<Product> getProductsByPortfolio(long id) {
         return productRepository.getProductByPortfolio_Id((int) id);
     }
@@ -46,8 +51,9 @@ public class PortfolioService {
         Portfolio portfolio = portfolioRepository.findById((long) product.getPortfolio().getId()).orElse(null);
         assert portfolio != null;
         productRepository.save(product);
-        portfolio.getProducts().add(product);
+//        portfolio.getProducts().add(product);
         portfolioRepository.save(portfolio);
+//        System.out.println(product.getPortfolio().getId());
         return product;
     }
 }

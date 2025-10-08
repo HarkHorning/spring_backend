@@ -51,7 +51,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "portfolio_id")
-    private Portfolio  portfolio;
+    private Portfolio portfolio;
 
     @ManyToOne
     @JoinColumn(name = "cart_id")

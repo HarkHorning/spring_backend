@@ -4,9 +4,7 @@ import hark.ecom.entities.products.Product;
 import hark.ecom.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/product")
@@ -23,5 +21,15 @@ public class ProductController {
     @RequestMapping("/getbyid")
     public Product findProductById(@Param("id") long id) {
         return productService.findProductById(id);
+    }
+
+    @RequestMapping("deleteproductbyid") // make @DeleteMapping
+    public void deleteProductById(@Param("id") long id) {
+        productService.deleteProductById(id);
+    }
+
+    @RequestMapping("/editproduct")
+    public Product editProductById(@RequestBody Product product) {
+        return productService.editProductById(product);
     }
 }
