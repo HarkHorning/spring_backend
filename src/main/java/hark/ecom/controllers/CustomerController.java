@@ -35,6 +35,11 @@ public class CustomerController {
         return customerService.signin(username, pwd);
     }
 
+    @PostMapping("/editcustomer")
+    public Customer editCustomer(@Param("pwd") String pwd, @RequestBody Customer customer) {
+        return customerService.editCustomer(customer, pwd);
+    }
+
     @RequestMapping("/self")
     public Customer findCustomerById(@Param("id") long id) {
         return customerService.findCustomerById(id);

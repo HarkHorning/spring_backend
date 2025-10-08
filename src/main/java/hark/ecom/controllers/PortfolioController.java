@@ -27,9 +27,14 @@ public class PortfolioController {
         return portfolioService.createPortfolio(portfolio);
     }
 
-    @GetMapping("getPortfolios")
+    @GetMapping("/getportfolios")
     public List<Portfolio> getPortfolios(@Param("id") long id) {
         return portfolioService.getPortfolios(id);
+    }
+
+    @GetMapping("/getportfolio")
+    public Portfolio getPortfolio(@Param("id") long id) {
+        return portfolioService.getPortfolio(id);
     }
 
     @GetMapping("/getproductsbyportfolio")

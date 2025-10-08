@@ -4,6 +4,7 @@ import hark.ecom.entities.products.Product;
 import hark.ecom.repositories.products.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -29,5 +30,13 @@ public class ProductService {
 
         Set<Product> products = productRepository.findAllByProductNameContainingIgnoreCase(filter);
         return products;
+    }
+
+    public void deleteProductById(long id) {
+        productRepository.deleteById(id);
+    }
+
+    public Product editProductById(@RequestBody Product product) {
+        return productRepository.saveAndFlush(product);
     }
 }

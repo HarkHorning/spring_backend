@@ -39,6 +39,15 @@ public class CustomerService {
         return "Auth Created Successfully";
     }
 
+    public Customer editCustomer(Customer customer, String pwd) {
+
+        String password = Hash.bCrypt(pwd);
+//        CustomerAuth customerAuth = customerAuthRepository.findByPasswordAndUsername(password, customer.getUsername());
+
+
+        return customerRepository.saveAndFlush(customer);
+    }
+
     public Customer findCustomerById(long id) {
 
         Optional<Customer> self = customerRepository.findById(id);
