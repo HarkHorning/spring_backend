@@ -49,13 +49,13 @@ public class VendorService {
         return portfolioRepository.findById(portfolioId).get();
     }
 
-    public List<Product> addProductToPortfolio(Long portfolioId, Product product) {
-        Portfolio portfolio = portfolioRepository.findById(portfolioId).orElse(null);
-        List<Product> products = portfolio.getProducts();
-        products.add(product);
-        portfolio.setProducts(products);
-        portfolioRepository.save(portfolio);
-        return products;
-    }
+//    public Product addProductToPortfolio(Long portfolioId, Product product) {
+//        Portfolio portfolio = portfolioRepository.findById(portfolioId).orElse(null);
+//        productRepository.save(product);
+//        assert portfolio != null;
+//        portfolio.getProducts().add(product);
+//        portfolioRepository.save(portfolio);
+//        return product;
+//    }
 
 }

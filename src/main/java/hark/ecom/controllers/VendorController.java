@@ -42,10 +42,10 @@ public class VendorController {
         return vendorService.getPortfolioById(portfolioId);
     }
 
-    @PostMapping("/addproducttoportfolio")
-    public List<Product> addProductToPortfolio(@RequestParam("portfolioId") Long portfolioId, @RequestBody Product product) {
-
-        return vendorService.addProductToPortfolio(portfolioId, product);
-    }
+//    @PostMapping("/addproducttoportfolio")
+//    public Product addProductToPortfolio(@RequestParam("portfolioId") Long portfolioId, @RequestBody Product product) {
+//
+//        return vendorService.addProductToPortfolio(portfolioId, product);
+//    }
 
 }
