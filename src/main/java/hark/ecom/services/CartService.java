@@ -64,6 +64,11 @@ public class CartService {
         return cartRepository.findByCustomerId(id);
     }
 
+    public int cartSizeById(long id) {
+        Cart cart = cartByUserId(id);
+        return cart.getCartItems().size();
+    }
+
     public String addItem(Long cartId, Long productId) {
 
         Product product = productRepository.findById(productId).orElse(null);

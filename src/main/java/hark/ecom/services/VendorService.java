@@ -58,4 +58,7 @@ public class VendorService {
 //        return product;
 //    }
 
+    public Vendor modifyVendor(Vendor vendor) {
+        return vendorRepository.saveAndFlush(vendor);
+    }
 }

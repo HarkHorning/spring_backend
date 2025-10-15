@@ -1,5 +1,6 @@
 package hark.ecom.services;
 
+import hark.ecom.entities.Portfolio;
 import hark.ecom.entities.products.Product;
 import hark.ecom.repositories.products.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -38,5 +40,17 @@ public class ProductService {
 
     public Product editProductById(@RequestBody Product product) {
         return productRepository.saveAndFlush(product);
+    }
+
+    public boolean checkProductsForPortfolio(Portfolio portfolio) {
+        if (productRepository.getAllByPortfolio(portfolio).isEmpty()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public List<Product> getProductsByQuantity(int quantity) {
+        return productRepository.findTopNEntities(quantity);
     }
 }

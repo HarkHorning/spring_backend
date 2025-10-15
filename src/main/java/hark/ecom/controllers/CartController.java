@@ -29,6 +29,11 @@ public class CartController {
         return CartService.cartByUserId(id);
     }
 
+    @RequestMapping("/cartsizebyid")
+    public int cartSizeById(@Param("id") long id) {
+        return cartService.cartSizeById(id);
+    }
+
     @PostMapping("/additem")
     public String addItem(@Param("ca_id") Long ca_id, @Param("pr_id") Long pr_id) {
         return cartService.addItem(ca_id, pr_id);

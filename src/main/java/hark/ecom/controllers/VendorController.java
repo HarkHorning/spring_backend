@@ -48,4 +48,8 @@ public class VendorController {
 //        return vendorService.addProductToPortfolio(portfolioId, product);
 //    }
 
+    @PostMapping("/editvendor")
+    public Vendor modifyVendor(@RequestBody Vendor vendor) {
+        return vendorService.modifyVendor(vendor);
+    }
 }
