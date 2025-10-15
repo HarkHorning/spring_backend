@@ -107,13 +107,119 @@ public class BootStrapData implements CommandLineRunner {
         product6.setProductRating(BigDecimal.valueOf(4.5));
         product6.setProductURL("https://picsum.photos/200?grayscale");
 
+        Product product7 = new Product();
+        product7.setProductName("Three Oranges");
+        product7.setDescription("If you think you like oranges, guess again. This has the potential to make you question everything you think you know about oranges; the good and the bad.");
+        product7.setProductPrice(BigDecimal.valueOf(10.02));
+        product7.setProductRating(BigDecimal.valueOf(4.5));
+        product7.setProductURL("https://picsum.photos/id/1/200");
+
+        Product product8 = new Product();
+        product8.setProductName("Four Oranges");
+        product8.setDescription("You have had three oranges, but have you ever had four. Something about the number four and oranges is fundamentally strange. Don't you think? I think. Therefore you should buy four oranges.");
+        product8.setProductPrice(BigDecimal.valueOf(12.73));
+        product8.setProductRating(BigDecimal.valueOf(5.0));
+        product8.setProductURL("https://picsum.photos/200?grayscale");
+
+        Product product9 = new Product();
+        product9.setProductName("Rug");
+        product9.setDescription("Quite frankly, I think you know what this is. People are always contacting me and saying they haven't heard of a rug before. This I do not believe. Please Stop being confused. It's a rug. Rugs are rugs.");
+        product9.setProductPrice(BigDecimal.valueOf(61.41));
+        product9.setProductRating(BigDecimal.valueOf(1.2));
+        product9.setProductURL("https://picsum.photos/id/1/200");
+
+        Product product10 = new Product();
+        product10.setProductName("Mysterious Object");
+        product10.setDescription("If you like mystery, than you should buy this. I don't even know what it is. It glows in the dark and I hear voices sometimes when I'm near it. I also won the lottery recently. Don't know if it's related. It's very mysterious.");
+        product10.setProductPrice(BigDecimal.valueOf(18.26));
+        product10.setProductRating(BigDecimal.valueOf(5.0));
+        product10.setProductURL("https://picsum.photos/200?grayscale");
+
+        Product product11 = new Product();
+        product11.setProductName("Products Sample 1");
+        product11.setDescription("This is a sample product made to be a placeholder.");
+        product11.setProductPrice(BigDecimal.valueOf(18.26));
+        product11.setProductRating(BigDecimal.valueOf(5.0));
+        product11.setProductURL("https://picsum.photos/seed/picsum/200");
+
+        Product product12 = new Product();
+        product12.setProductName("Products Sample 2");
+        product12.setDescription("This is a sample product made to be a placeholder.");
+        product12.setProductPrice(BigDecimal.valueOf(18.26));
+        product12.setProductRating(BigDecimal.valueOf(5.0));
+        product12.setProductURL("https://picsum.photos/seed/picsum/200");
+
+        Product product13 = new Product();
+        product13.setProductName("Products Sample 3");
+        product13.setDescription("This is a sample product made to be a placeholder.");
+        product13.setProductPrice(BigDecimal.valueOf(18.26));
+        product13.setProductRating(BigDecimal.valueOf(5.0));
+        product13.setProductURL("https://picsum.photos/seed/picsum/200");
+
+        Product product14 = new Product();
+        product14.setProductName("Products Sample 4");
+        product14.setDescription("This is a sample product made to be a placeholder.");
+        product14.setProductPrice(BigDecimal.valueOf(18.26));
+        product14.setProductRating(BigDecimal.valueOf(5.0));
+        product14.setProductURL("https://picsum.photos/seed/picsum/200");
+
+        Product product15 = new Product();
+        product15.setProductName("Products Sample 5");
+        product15.setDescription("This is a sample product made to be a placeholder.");
+        product15.setProductPrice(BigDecimal.valueOf(18.26));
+        product15.setProductRating(BigDecimal.valueOf(5.0));
+        product15.setProductURL("https://picsum.photos/seed/picsum/200");
+
+        Product product16 = new Product();
+        product16.setProductName("Products Sample 6");
+        product16.setDescription("This is a sample product made to be a placeholder.");
+        product16.setProductPrice(BigDecimal.valueOf(18.26));
+        product16.setProductRating(BigDecimal.valueOf(5.0));
+        product16.setProductURL("https://picsum.photos/seed/picsum/200");
+
+        Product product17 = new Product();
+        product17.setProductName("Products Sample 7");
+        product17.setDescription("This is a sample product made to be a placeholder.");
+        product17.setProductPrice(BigDecimal.valueOf(18.26));
+        product17.setProductRating(BigDecimal.valueOf(5.0));
+        product17.setProductURL("https://picsum.photos/seed/picsum/200");
+
+        Product product18 = new Product();
+        product18.setProductName("Products Sample 8");
+        product18.setDescription("This is a sample product made to be a placeholder.");
+        product18.setProductPrice(BigDecimal.valueOf(18.26));
+        product18.setProductRating(BigDecimal.valueOf(5.0));
+        product18.setProductURL("https://picsum.photos/seed/picsum/200");
+
+        Product product19 = new Product();
+        product19.setProductName("Products Sample 9");
+        product19.setDescription("This is a sample product made to be a placeholder.");
+        product19.setProductPrice(BigDecimal.valueOf(18.26));
+        product19.setProductRating(BigDecimal.valueOf(5.0));
+        product19.setProductURL("https://picsum.photos/seed/picsum/200");
+
+
+
         Product[] newProducts = {
                 product,
                 product2,
                 product3,
                 product4,
                 product5,
-                product6
+                product6,
+                product7,
+                product8,
+                product9,
+                product10,
+                product11,
+                product12,
+                product13,
+                product14,
+                product15,
+                product16,
+                product17,
+                product18,
+                product19,
         };
 
         List<Product> allProducts = (List<Product>) productRepo.findAll();

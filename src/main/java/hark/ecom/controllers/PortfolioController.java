@@ -47,4 +47,9 @@ public class PortfolioController {
 
         return  portfolioService.addProductToPortfolio(product);
     }
+
+    @GetMapping("/deleteportfolio") // make deletemapping
+    public String deletePortfolio(@Param("id") long id) {
+        return portfolioService.deletePortfolio(id);
+    }
 }

@@ -18,11 +18,13 @@ public class PortfolioService {
     private PortfolioRepository portfolioRepository;
     private final VendorRepository vendorRepository;
     private final ProductRepository productRepository;
+    private final ProductService productService;
 
-    public PortfolioService(PortfolioRepository portfolioRepository,  VendorRepository vendorRepository,  ProductRepository productRepository) {
+    public PortfolioService(PortfolioRepository portfolioRepository,  VendorRepository vendorRepository,  ProductRepository productRepository, ProductService productService) {
         this.portfolioRepository = portfolioRepository;
         this.vendorRepository = vendorRepository;
         this.productRepository = productRepository;
+        this.productService = productService;
     }
 
     public Portfolio createPortfolio(Portfolio portfolio) {
@@ -55,5 +57,16 @@ public class PortfolioService {
         portfolioRepository.save(portfolio);
 //        System.out.println(product.getPortfolio().getId());
         return product;
+    }
+
+    public String deletePortfolio(long id) {
+        Portfolio portfolio = portfolioRepository.findById((long) id).orElse(null);
+        assert portfolio != null;
+        if (productService.checkProductsForPortfolio(portfolio)) {
+            portfolioRepository.delete(portfolio);
+            return "Portfolio has been deleted";
+        } else {
+            return "Portfolio has not been deleted. Products are associated with this portfolio.";
+        }
     }
 }

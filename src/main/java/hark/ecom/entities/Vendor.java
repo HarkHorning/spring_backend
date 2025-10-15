@@ -27,6 +27,9 @@ public class Vendor {
     @Column(name = "shop_name")
     private String shopName;
 
+    @Column(name = "shop_description")
+    private String description;
+
     @Column(name = "vendor_email")
     private String email;
 
