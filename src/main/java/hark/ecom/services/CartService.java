@@ -135,6 +135,11 @@ public class CartService {
             orderedCart.setStatus(CartStatus.ordered);
             List<OrderedCartItem> orderedCartItems = new ArrayList<>();
             for  (CartItem item : cartItems) {
+
+                // uptick sale of product
+                item.getProduct().setAmountSold(item.getProduct().getAmountSold() +1);
+
+                // create ordered cart items
                 OrderedCartItem thisItem = new OrderedCartItem();
                 thisItem.setOrderedCart(orderedCart);
                 thisItem.setProduct(item.getProduct());

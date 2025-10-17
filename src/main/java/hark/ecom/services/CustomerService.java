@@ -67,11 +67,13 @@ public class CustomerService {
 
             CustomerAuth realAuth = customerAuthRepository.findByPasswordAndUsername(password, username);
 
+            Customer customer = realAuth.getCustomer();
+
             if (realAuth == null) {
                 return "No match found for username or password";
             } else {
 
-                return "success";
+                return customer.getId().toString();
             }
         }
     }
