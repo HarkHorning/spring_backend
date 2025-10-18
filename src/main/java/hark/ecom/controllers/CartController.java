@@ -48,4 +48,9 @@ public class CartController {
     public String buycart(@Param("ca_id") Long ca_id) {
         return cartService.buyCart(ca_id);
     }
+
+    @PostMapping("/orderproduct")
+    public String buyItemMakeOrderCart(@Param("customerid") Long customerid, @Param("productid") Long productid) {
+        return cartService.buyItemMakeOrderCart(customerid, productid);
+    }
 }

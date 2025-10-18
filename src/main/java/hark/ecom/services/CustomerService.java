@@ -59,6 +59,8 @@ public class CustomerService {
 //        decrypt
 //        validate
 
+
+
         String password = Hash.bCrypt(pwd);
 
         if (username == null || pwd == null) {

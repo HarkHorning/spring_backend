@@ -67,7 +67,7 @@ public class BootStrapData implements CommandLineRunner {
 //        customerRepo.save(customer2);
 
         Product product = new Product();
-        product.setProductName("Sword");
+        product.setProductName("Camera 200");
         product.setDescription("Very big sword. Very pointy. If you stab someone, don't tell anyone where you got the sword.");
         product.setProductPrice(BigDecimal.valueOf(12.23));
         product.setProductRating(BigDecimal.valueOf(3.9));

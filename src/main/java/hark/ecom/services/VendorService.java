@@ -11,7 +11,10 @@ import hark.ecom.repositories.products.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -73,6 +76,23 @@ public class VendorService {
 
         for (Portfolio portfolio : portfolios) {
             products.addAll(portfolioService.getProductsByPortfolio(portfolio.getId()));
+        }
+
+
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        for (Product product : products) {
+            String formattedDate = formatter.format(product.getCreated());
+//            System.out.println(formattedDate);
+//            product.setCreated((Date) formattedDate);
+
+            try {
+                Date date = formatter.parse(formattedDate);
+                System.out.println("Parsed Date: " + date);
+                product.setCreated(date);
+                System.out.println(product.getCreated());
+            } catch (ParseException e) {
+                System.err.println("Error parsing date: " + e.getMessage());
+            }
         }
 
         return products;
