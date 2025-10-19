@@ -49,6 +49,9 @@ public class Product {
     @UpdateTimestamp
     private Date modified;
 
+    @Column(name = "amount_sold")
+    private int amountSold;
+
     @ManyToOne
     @JoinColumn(name = "portfolio_id")
     private Portfolio portfolio;

@@ -52,4 +52,9 @@ public class VendorController {
     public Vendor modifyVendor(@RequestBody Vendor vendor) {
         return vendorService.modifyVendor(vendor);
     }
+
+    @RequestMapping("/salesreport")
+    public List<Product> getSalesReportByVendorId(@RequestParam("vendorid") Long vendorid) {
+        return vendorService.getSalesReportByVendorId(vendorid);
+    }
 }

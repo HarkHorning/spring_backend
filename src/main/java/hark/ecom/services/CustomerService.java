@@ -5,6 +5,7 @@ import hark.ecom.entities.customers.CustomerAuth;
 import hark.ecom.repositories.customers.CustomerAuthRepository;
 import hark.ecom.repositories.customers.CustomerRepository;
 import hark.ecom.security.Hash;
+import hark.ecom.validators.ValidPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,22 +58,28 @@ public class CustomerService {
     public String signin(String username, String pwd) {
 
 //        decrypt
-//        validate
+        if (ValidPassword.validPassword(pwd)) {
 
-        String password = Hash.bCrypt(pwd);
 
-        if (username == null || pwd == null) {
-            return "Username or password is empty";
-        } else {
+            String password = Hash.bCrypt(pwd);
 
-            CustomerAuth realAuth = customerAuthRepository.findByPasswordAndUsername(password, username);
-
-            if (realAuth == null) {
-                return "No match found for username or password";
+            if (username == null || pwd == null) {
+                return "Username or password is empty";
             } else {
 
-                return "success";
+                CustomerAuth realAuth = customerAuthRepository.findByPasswordAndUsername(password, username);
+
+                Customer customer = realAuth.getCustomer();
+
+                if (realAuth == null) {
+                    return "No match found for username or password";
+                } else {
+
+                    return customer.getId().toString();
+                }
             }
+        } else {
+            return "Invalid password";
         }
     }
 }

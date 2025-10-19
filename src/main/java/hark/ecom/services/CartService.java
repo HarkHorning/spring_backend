@@ -135,6 +135,11 @@ public class CartService {
             orderedCart.setStatus(CartStatus.ordered);
             List<OrderedCartItem> orderedCartItems = new ArrayList<>();
             for  (CartItem item : cartItems) {
+
+                // uptick sale of product
+                item.getProduct().setAmountSold(item.getProduct().getAmountSold() +1);
+
+                // create ordered cart items
                 OrderedCartItem thisItem = new OrderedCartItem();
                 thisItem.setOrderedCart(orderedCart);
                 thisItem.setProduct(item.getProduct());
@@ -151,5 +156,26 @@ public class CartService {
 
             return "Successfully bought a cart with id: " + cart.getId();
         }
+    }
+
+    public String buyItemMakeOrderCart(Long customerId, Long productId) {
+
+        Customer customer = customerRepository.findById(customerId).orElse(null);
+        Product product = productRepository.findById(productId).orElse(null);
+        OrderedCartItem  orderedCartItem = new OrderedCartItem();
+        orderedCartItem.setProduct(product);
+        OrderedCart orderedCart = new OrderedCart();
+//            orderedCartsRepository.save(orderedCart);
+        orderedCart.setCustomer(customer);
+        orderedCart.setOrderTrackingNumber(generateOrderTrackingNumber());
+        List<OrderedCartItem> orderedCartItems = new ArrayList<>();
+        orderedCartItems.add(orderedCartItem);
+        orderedCart.setOrderedCartItems(orderedCartItems);
+        orderedCart.setStatus(CartStatus.ordered);
+
+        orderedCartsRepository.save(orderedCart);
+        orderedCartItemRepository.saveAll(orderedCartItems);
+
+        return "Successfully bought a cart with id: " + orderedCart.getOrderTrackingNumber();
     }
 }

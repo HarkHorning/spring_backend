@@ -81,10 +81,38 @@
             <artifactId>jakarta.persistence-api</artifactId>
             <version>3.1.0</version> <!-- Use the appropriate version -->
         </dependency>
+        <dependency>
+            <groupId>org.passay</groupId>
+            <artifactId>passay</artifactId>
+            <version>1.6.1</version> <!-- Use the latest stable version -->
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.glassfish.jakarta.validation</groupId>-->
 <!--            <artifactId>jakarta.validation-api</artifactId>-->
+<!--            <version>3.0.2</version> &lt;!&ndash; Or a suitable version &ndash;&gt;-->
+
 <!--        </dependency>-->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version> <!-- Or a suitable version -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>9.37</version> <!-- Use the latest stable version -->
+        </dependency>
+
     </dependencies>
 
     <build>
