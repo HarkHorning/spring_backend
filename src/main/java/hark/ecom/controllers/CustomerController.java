@@ -1,8 +1,6 @@
 package hark.ecom.controllers;
 
-import hark.ecom.entities.customers.Customer;
-import hark.ecom.entities.customers.CustomerAuth;
-import hark.ecom.repositories.customers.CustomerAuthRepository;
+import hark.ecom.entities.Customer;
 import hark.ecom.services.CartService;
 import hark.ecom.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/customer")
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000", "https://main.d3hp9ukhesqw19.amplifyapp.com"})
 public class CustomerController {
 
     private final CustomerService customerService;

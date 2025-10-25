@@ -1,7 +1,5 @@
-package hark.ecom.entities.products;
+package hark.ecom.entities;
 
-import hark.ecom.entities.Cart;
-import hark.ecom.entities.Portfolio;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

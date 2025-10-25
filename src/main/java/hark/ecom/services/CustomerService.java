@@ -1,11 +1,10 @@
 package hark.ecom.services;
 
-import hark.ecom.entities.customers.Customer;
-import hark.ecom.entities.customers.CustomerAuth;
+import hark.ecom.entities.Customer;
+import hark.ecom.entities.CustomerAuth;
 import hark.ecom.repositories.customers.CustomerAuthRepository;
 import hark.ecom.repositories.customers.CustomerRepository;
 import hark.ecom.security.Hash;
-import hark.ecom.validators.ValidPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,28 +57,28 @@ public class CustomerService {
     public String signin(String username, String pwd) {
 
 //        decrypt
-        if (ValidPassword.validPassword(pwd)) {
+//        if (ValidPassword.validPassword(pwd)) {
+        if (true) {
 
+                String password = Hash.bCrypt(pwd);
 
-            String password = Hash.bCrypt(pwd);
-
-            if (username == null || pwd == null) {
-                return "Username or password is empty";
-            } else {
-
-                CustomerAuth realAuth = customerAuthRepository.findByPasswordAndUsername(password, username);
-
-                Customer customer = realAuth.getCustomer();
-
-                if (realAuth == null) {
-                    return "No match found for username or password";
+                if (username == null || pwd == null) {
+                    return "Username or password is empty";
                 } else {
 
-                    return customer.getId().toString();
+                    CustomerAuth realAuth = customerAuthRepository.findByPasswordAndUsername(password, username);
+
+                    Customer customer = realAuth.getCustomer();
+
+                    if (realAuth == null) {
+                        return "No match found for username or password";
+                    } else {
+
+                        return customer.getId().toString();
+                    }
                 }
+            } else {
+                return "Invalid password";
             }
-        } else {
-            return "Invalid password";
         }
-    }
 }

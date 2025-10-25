@@ -1,10 +1,10 @@
 package hark.ecom.config;
 
 import hark.ecom.entities.Cart;
-import hark.ecom.entities.customers.Customer;
+import hark.ecom.entities.Customer;
 import hark.ecom.entities.Vendor;
-import hark.ecom.entities.products.Category;
-import hark.ecom.entities.products.Product;
+import hark.ecom.entities.Category;
+import hark.ecom.entities.Product;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;

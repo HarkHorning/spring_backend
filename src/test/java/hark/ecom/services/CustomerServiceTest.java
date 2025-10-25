@@ -1,21 +1,10 @@
 package hark.ecom.services;
 
-import hark.ecom.entities.customers.Customer;
-import hark.ecom.entities.customers.CustomerAuth;
-import hark.ecom.repositories.customers.CustomerAuthRepository;
-import hark.ecom.repositories.customers.CustomerRepository;
-import hark.ecom.repositories.products.ProductRepository;
-import org.junit.jupiter.api.AfterEach;
+import hark.ecom.entities.Customer;
+import hark.ecom.entities.CustomerAuth;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 //@DataJpaTest
 class CustomerServiceTest {

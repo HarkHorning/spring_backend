@@ -1,6 +1,5 @@
 package hark.ecom.entities;
 
-import hark.ecom.entities.customers.Customer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

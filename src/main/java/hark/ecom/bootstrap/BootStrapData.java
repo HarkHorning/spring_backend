@@ -1,7 +1,7 @@
 package hark.ecom.bootstrap;
 
-import hark.ecom.entities.customers.Customer;
-import hark.ecom.entities.products.Product;
+import hark.ecom.entities.Customer;
+import hark.ecom.entities.Product;
 import hark.ecom.repositories.CartRepository;
 import hark.ecom.repositories.customers.CustomerRepository;
 import hark.ecom.repositories.products.ProductRepository;
@@ -10,7 +10,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
 
 @Component

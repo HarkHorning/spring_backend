@@ -1,4 +1,4 @@
-package hark.ecom.entities.products;
+package hark.ecom.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
