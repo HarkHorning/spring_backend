@@ -1,11 +1,10 @@
 package hark.ecom.services;
 
-import hark.ecom.entities.customers.Customer;
-import hark.ecom.entities.customers.CustomerAuth;
+import hark.ecom.entities.Customer;
+import hark.ecom.entities.CustomerAuth;
 import hark.ecom.repositories.customers.CustomerAuthRepository;
 import hark.ecom.repositories.customers.CustomerRepository;
 import hark.ecom.security.Hash;
-import hark.ecom.validators.ValidPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

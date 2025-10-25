@@ -1,9 +1,6 @@
 package hark.ecom.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import hark.ecom.entities.Cart;
-import hark.ecom.entities.OrderedCart;
-import hark.ecom.entities.products.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package hark.ecom.entities.enums;
+package hark.ecom.entities;
 
 public enum CartStatus {
     pending,

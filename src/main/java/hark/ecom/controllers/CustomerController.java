@@ -1,8 +1,6 @@
 package hark.ecom.controllers;
 
-import hark.ecom.entities.customers.Customer;
-import hark.ecom.entities.customers.CustomerAuth;
-import hark.ecom.repositories.customers.CustomerAuthRepository;
+import hark.ecom.entities.Customer;
 import hark.ecom.services.CartService;
 import hark.ecom.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;

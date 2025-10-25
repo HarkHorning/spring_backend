@@ -2,8 +2,8 @@ package hark.ecom.services;
 
 import hark.ecom.entities.Portfolio;
 import hark.ecom.entities.Vendor;
-import hark.ecom.entities.customers.Customer;
-import hark.ecom.entities.products.Product;
+import hark.ecom.entities.Customer;
+import hark.ecom.entities.Product;
 import hark.ecom.repositories.customers.CustomerRepository;
 import hark.ecom.repositories.PortfolioRepository;
 import hark.ecom.repositories.VendorRepository;

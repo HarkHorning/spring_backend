@@ -1,16 +1,10 @@
 package hark.ecom.services;
 
-import hark.ecom.entities.products.Product;
 import hark.ecom.repositories.products.ProductRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ProductServiceTest {
 
@@ -65,5 +59,29 @@ class ProductServiceTest {
     void getProductsByQuantity() {
         int num = 1;
         Assertions.assertEquals(1, num);
+    }
+
+    @Test
+    void testFindProductById() {
+    }
+
+    @Test
+    void testSearchProducts() {
+    }
+
+    @Test
+    void testDeleteProductById() {
+    }
+
+    @Test
+    void testEditProductById() {
+    }
+
+    @Test
+    void testCheckProductsForPortfolio() {
+    }
+
+    @Test
+    void testGetProductsByQuantity() {
     }
 }
