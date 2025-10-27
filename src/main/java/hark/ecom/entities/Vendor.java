@@ -52,4 +52,14 @@ public class Vendor {
 
 
     public Vendor() {}
+
+    public Vendor(Customer customer, String shopName, String description, String email, String phone, String avatarURL, boolean published) {
+        this.customer = customer;
+        this.shopName = shopName;
+        this.description = description;
+        this.email = email;
+        this.phone = phone;
+        this.avatarURL = avatarURL;
+        this.published = published;
+    }
 }
