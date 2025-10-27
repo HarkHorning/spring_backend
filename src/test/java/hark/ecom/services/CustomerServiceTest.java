@@ -21,17 +21,18 @@ class CustomerServiceTest {
     @BeforeEach
     @Test
     void createCustomer() {
+
         Customer customer = new Customer();
         Assertions.assertNotNull(customer);
         customer.setFirstName("FirstName");
         customer.setLastName("LastName");
         Assertions.assertEquals("FirstName", customer.getFirstName());
         Assertions.assertEquals("LastName", customer.getLastName());
-//        customerRepository.save(customer);
     }
 
     @Test
     void createAuth() {
+
         Customer customer = new Customer();
         Assertions.assertNotNull(customer);
         customer.setFirstName("FirstName");
@@ -50,6 +51,7 @@ class CustomerServiceTest {
 
     @Test
     void editCustomer() {
+
     }
 
     @Test
